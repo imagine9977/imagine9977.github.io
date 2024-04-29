@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            width: 100%;
+            overflow-x: hidden;
+            height: 100%;
+            margin: 0;
+        }
+
+        .logo_wrap {
+            float: left;
+            width: 128px;
+            height: auto;
+            margin-left: 100px;
+        }
+
+        .logo_wrap a {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .logo_wrap a img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        #gnb {
+            clear: both;
+            display: block;
+            width: 1280px;
+            height: 50px;
+            margin: 15px auto;
+        }
+
+        #gnb a {
+            text-decoration: none;
+        }
+
+        #gnb ul {
+            list-style: none;
+        }
+
+        #gnb .item {
+            float: left;
+            width: 25%;
+            position: relative;
+        }
+
+        #gnb a.dp1 {
+            display: block;
+            line-height: 38px;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+        }
+
+        #gnb .sub_menu {
+            display: none;
+            position: absolute;
+            top: 38px;
+            left: 0px;
+            padding: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        #gnb .item:hover .sub_menu {
+            display: block;
+        }
+
+        #gnb .item:hover a.dp1 {
+            background-color: deepskyblue;
+        }
+
+        #gnb .item .sub_menu li {
+            margin: 0;
+            padding: 0;
+            text-indent: 90px;
+            line-height: 32px;
+            width: 100%;
+            background-color: #659ffc;
+        }
+
+        #gnb .item .sub_menu li:hover {
+            background-color: deepskyblue;
+        }
+
+        #gnb .item .sub_menu li a {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo_wrap">
+        <a href="figma.html"><img src="favicon.png" alt="방학동 로고" /></a>
+    </div>
+    <div id="tnb" style="height:100px; line-height:2rem; padding-top:1rem; float: right; margin-right: 20%; text-align: right;">
+        <c:if test="${not empty sid }">
+            <h2 style=>김수한무님 환영합니다.</h2>
+           <a class="button" href="${hpath }/member/login.jsp">정보수정</a>
+            <a class="button" href="${hpath }/member/term.jsp">로그아웃</a>
+        </c:if>
+        
+    </div>
+    <nav id="gnb">
+        <ul class="">
+            <li class="item">
+                <a href="" class="dp1">마이페이지</a>
+                <ul class="sub_menu">
+                    <c:if test="${empty sid }">
+                        <li><a href="${hpath }/member/login.jsp">로그인</a></li>
+                        <li><a href="register.html">회원가입</a></li>
+                    </c:if>
+                    <c:if test="${not empty sid }">
+                        <li><a href="${hpath }/LogOut.do">로그아웃</a></li>
+                        <li><a href="${hpath }/EditMember.do?id=${sid }">회원정보</a></li>
+                    </c:if>
+                    <c:if test="${sid.equals('admin') }">
+                        <li><a href="${hpath }/AdminMain.do">관리자로</a></li>
+                    </c:if>
+                    <li><a href="${hpath }/member/terms.jsp">회원약관</a></li>
+                    <li><a href="${hpath }/member/policy.jsp">개인정보처리방침</a></li>
+                </ul>
+            </li>
+            <li class="item">
+                <a href="" class="dp1">지역소개</a>
+                <ul class="sub_menu">
+                    <li><a href="${hpath }/intro/origin.jsp">지명유래</a></li>
+                    <li><a href="tour.html">지역 특징 및 시설안내</a></li>
+                    <li><a href="${hpath }/intro/history.jsp">연혁</a></li>
+                    <li><a href="${hpath }/intro/map.jsp">오시는 길</a></li>
+                </ul>
+            </li>
+            <li class="item">
+                <a href="" class="dp1">이용안내</a>
+                <ul class="sub_menu">
+                    <li><a href="${hpath }/tour/trafficList.jsp">교통편 안내</a></li>
+                    <li><a href="${hpath }/tour/building.jsp">주요 빌딩</a></li>
+                    <li><a href="${hpath }/tour/association.jsp">주요 협회 단체</a></li>
+                    <li><a href="${hpath }/tour/rest.jsp">맛집 안내</a></li>
+                    <li><a href="${hpath }/tour/lodg.jsp">숙박 시설 안내</a></li>
+                </ul>
+            </li>
+            <li class="item">
+                <a href="" class="dp1">커뮤니티</a>
+                <ul class="sub_menu">
+                    <li><a href="notice.html">공지사항</a></li>
+                    <li><a href="">자료실</a></li>
+                    <li><a href="${hpath }/GetQnaList.do">묻고답하기</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>
